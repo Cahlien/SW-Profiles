@@ -14,7 +14,7 @@ export default function CharacterList(){
 
     return (
         <Fragment>
-            <Table striped bordered hover className={'me-3 table-responsive'} >
+            <Table striped bordered hover className={'me-3 table-responsive my-5'} >
                 <thead>
                 <tr>
                     <th className={'col-11'}>Name</th>
