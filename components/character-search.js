@@ -2,12 +2,14 @@ import {Fragment} from "react";
 import {Form} from "react-bootstrap";
 import axios from "axios";
 import {characterActions} from "../redux/characters";
+import {useRouter} from "next/router";
 
 import {useDispatch} from "react-redux";
 
 export default function CharacterSearch() {
-    let characterName;
+    const router = useRouter();
     const dispatch = useDispatch();
+    let characterName;
 
     function handleCharacterNameChange(event) {
         characterName = event.target.value;
@@ -15,11 +17,14 @@ export default function CharacterSearch() {
 
     async function handleCharacterSearch(event) {
         event.preventDefault();
-        const response = await axios.get('http://swapi.dev/api/people', {
-            params: {
-                search: characterName
-            }
-        });
+        if (router.query.id !== '/'){
+            await router.push('/');
+        }
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_CHARACTER_ENDPOINT}`, {
+                params: {
+                    search: characterName
+                }
+            });
 
         dispatch(characterActions.updateCharacters(response.data.results));
 
@@ -27,7 +32,7 @@ export default function CharacterSearch() {
 
     return (
         <Fragment>
-            <Form className={'d-flex'}>
+            <Form className={'d-flex col-8 col-sm-5 col-lg-3 col-xl-2'}>
                 <input className="form-control me-2" type="search" placeholder="Search by name" aria-label="Search"
                        onChange={handleCharacterNameChange}/>
                 <button className="btn btn-outline-success" type="submit" onClick={handleCharacterSearch}>Search
