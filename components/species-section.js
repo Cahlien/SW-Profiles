@@ -2,16 +2,18 @@ import {Fragment, useEffect, useState} from "react";
 import axios from "axios";
 
 export default function SpeciesSection(props){
-    const url = props.url;
+    const speciesIndex = props.speciesIndex;
     const [species, setSpecies] = useState();
 
     async function fetchSpeciesInformation(){
-        const results = await axios.get(url);
-        setSpecies(results);
+        if(speciesIndex){
+            const results = await axios.get(`${process.env.NEXT_PUBLIC_SPECIES_ENDPOINT}` + speciesIndex);
+            setSpecies(results);
+        }
     }
 
     useEffect(() => {
-        if(!species && url){
+        if(!species){
             fetchSpeciesInformation();
         }
     })

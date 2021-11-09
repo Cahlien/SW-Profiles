@@ -4,13 +4,11 @@ import {Fragment, useEffect, useState} from "react";
 export default function StarshipsSection(props){
     const [starships, setStarships] = useState();
 
-    async function fetchStarshipInformation(urls){
+    async function fetchStarshipInformation(ships){
         const starshipArray = [];
-
-        for(const url of urls){
-            const results = await axios.get(url);
+        for(const ship of ships){
+            const results = await axios.get(`${process.env.NEXT_PUBLIC_STARSHIPS_ENDPOINT}` + ship);
             starshipArray.push(results?.data?.name);
-            console.log(results);
         }
 
         setStarships(starshipArray);
