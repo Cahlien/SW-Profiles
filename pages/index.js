@@ -30,8 +30,8 @@ export default function Home() {
                         <li>Click on the search button to produce a list of matching characters</li>
                         <li>Find the Details column of the list and click the View button</li>
                     </ol>
-                    { characters !== undefined && characters.length > 0 &&
-                        <CharacterList/>
+                    { characters[0]?.name !== undefined &&
+                        <CharacterList />
                     }
                 </main>
             </Layout>
