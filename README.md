@@ -2,8 +2,8 @@
 
 Thank you for taking the time to review my work!  This is the first Next.js 
 app that I have made or worked on; I learned Next.js on November 7, 2021.
-Other technologies used include bootstrap, axios, redux, and the redux 
-toolkit.  I had not used redux in quite some time, so I thought this was a 
+Other technologies used include bootstrap, axios, redux, the redux 
+toolkit, and jest.  I had not used redux in quite some time, so I thought this was a 
 good opportunity to brush up on it, as well.  
 
 ## Description
