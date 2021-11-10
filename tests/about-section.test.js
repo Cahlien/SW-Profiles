@@ -4,7 +4,7 @@ import AboutSection from "../components/about-section";
 
 describe('AboutSection', () => {
     it('renders the section', async () => {
-        const aboutSection = render(<AboutSection />);
+        const aboutSection = render(<AboutSection/>);
 
         const heading = aboutSection.getByText(/About/);
 
@@ -20,12 +20,13 @@ describe('AboutSection', () => {
             birth_year: "19BBY"
         };
 
-        const aboutSection = render(<AboutSection character={character} />)
+        const aboutSection = render(<AboutSection character={character}/>)
 
         const height = aboutSection.getByText(/172/);
         const mass = aboutSection.getByText(/77/);
         const hairColor = aboutSection.getByText(/blond/);
         const dob = aboutSection.getByText(/19BBY/);
+
         expect(height).toBeInTheDocument();
         expect(mass).toBeInTheDocument();
         expect(hairColor).toBeInTheDocument();
